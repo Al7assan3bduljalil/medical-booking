@@ -1,0 +1,12 @@
+services:
+  medical-booking:
+    build: .
+    container_name: medical-booking
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Africa/Tripoli}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "${HOST_PORT:-8091}:3000"
